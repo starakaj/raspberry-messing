@@ -6,6 +6,7 @@ sensor.read(22, 14, function(err, temperature, humidity) {
   if (!err) {
     console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
   } else {
+      console.log("Some error");
       console.log(err);
   }
 });
