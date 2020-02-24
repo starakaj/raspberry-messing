@@ -1,12 +1,15 @@
 console.log("Starting node sensor script");
 
-const sensor = require("node-dht-sensor");
+const sensor = require("node-dht-sensor").promises;
  
-sensor.read(22, 14, function(err, temperature, humidity) {
-  if (!err) {
+// You can use `initialize` and `setMaxTries` just like before
+sensor.setMaxRetries(10);
+sensor.initialize(22, 14);
+ 
+
+sensor.read(22, 14).then((temperature, humidity) => {
     console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
-  } else {
-      console.log("Some error");
-      console.log(err);
-  }
+}).catch(e => {
+    console.log("Error!");
+    console.log(e);
 });
