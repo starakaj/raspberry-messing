@@ -1,3 +1,5 @@
+console.log("Starting node sensor script");
+
 const sensor = require("node-dht-sensor");
  
 sensor.read(11, 14, function(err, temperature, humidity) {
